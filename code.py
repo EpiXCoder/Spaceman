@@ -1,5 +1,9 @@
 import random
 
+# from colored import fg
+
+from colorama import Fore 
+
 # def load_word():
 #     f = open('words.txt', 'r')
 #     words_list = f.readlines()
@@ -91,6 +95,8 @@ def is_guess_in_word(guess, secret_word):
 
 # print (is_guess_in_word(guess, secret_word))
 
+# welcomeMessage = 'WELCOME to SPACE MAN'
+
 
 def spaceman(secret_word):
     '''
@@ -100,7 +106,17 @@ def spaceman(secret_word):
       secret_word (string): the secret word to guess.
 
     '''
+    colors = dict(Fore.__dict__.items())
+    starBorder = '*****************************\n'
+    for character in starBorder:
+        print(colors[random.choice(list(colors.keys()))] + character, end='')
+    welcomeMessage = 'WELCOME to SPACE MAN\n'
+    for character in welcomeMessage:
+        print(colors[random.choice(list(colors.keys()))] + character, end='')
+    for character in starBorder:
+        print(colors[random.choice(list(colors.keys()))] + character, end='')
 
+spaceman(secret_word)
 
     #TODO: show the player information about the game according to the project spec
 
