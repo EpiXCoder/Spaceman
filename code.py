@@ -1,22 +1,26 @@
 import random
 
-def load_word():
-    '''
-    A function that reads a text file of words and randomly selects one to use as the secret word
-        from the list.
-
-    Returns: 
-           string: The secret word to be used in the spaceman guessing game
-    '''
-    f = open('words.txt', 'r')
-    words_list = f.readlines()
-    f.close()
+# def load_word():
+#     f = open('words.txt', 'r')
+#     words_list = f.readlines()
+#     f.close()
     
-    words_list = words_list[0].split(' ') #comment this line out if you use a words.txt file with each word on a new line
-    secret_word = random.choice(words_list)
-    return secret_word
+#     words_list = words_list[0].split(' ') 
+#     secret_word = random.choice(words_list)
+#     # print (secret_word)
+#     return secret_word
+
+# secret_word = list(load_word())
+secret_word = ['a', 'p', 'p', 'l', 'e']
+print(secret_word)
+secret_word_joint = ''.join(secret_word)
+print (secret_word_joint)
+hidden_word = list(len(secret_word) * '_')
+print(hidden_word)
+letters_guessed = ['a', 'n', 'e', 't' ]
 
 def is_word_guessed(secret_word, letters_guessed):
+
     '''
     A function that checks if all the letters of the secret word have been guessed.
 
@@ -27,10 +31,18 @@ def is_word_guessed(secret_word, letters_guessed):
     Returns: 
         bool: True only if all the letters of secret_word are in letters_guessed, False otherwise
     '''
-    # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
-    pass
+    for i in secret_word:
+        if i not in letters_guessed:
+            return False
+    return True
+        
+    #TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
+    #pass
 
-def get_guessed_word(secret_word, letters_guessed):
+# print(is_word_guessed(secret_word, letters_guessed))
+
+
+def get_guessed_word(secret_word, letters_guessed, hidden_word):
     '''
     A function that is used to get a string showing the letters guessed so far in the secret word and underscores for letters that have not been guessed yet.
 
@@ -42,10 +54,16 @@ def get_guessed_word(secret_word, letters_guessed):
         string: letters and underscores.  For letters in the word that the user has guessed correctly, the string should contain the letter at the correct position.  For letters in the word that the user has not yet guessed, shown an _ (underscore) instead.
     '''
 
-    #TODO: Loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
+    i = 0
+    while i < len(secret_word):
+        if secret_word[i] in letters_guessed:
+            hidden_word[i] = secret_word[i]
+        i += 1
 
-    pass
 
+get_guessed_word(secret_word, letters_guessed,hidden_word)
+print(hidden_word)
+print(''.join(hidden_word))
 
 def is_guess_in_word(guess, secret_word):
     '''
@@ -92,5 +110,5 @@ def spaceman(secret_word):
 
 
 #These function calls that will start the game
-secret_word = load_word()
-spaceman(secret_word)
+# secret_word = load_word()
+# spaceman(secret_word)
