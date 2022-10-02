@@ -1,0 +1,59 @@
+IMPORT random
+
+DEFINE FUNCTION  load_word 
+    READ words.txt and
+    SELECT word randomly 
+    RETURN secret word
+
+DEFINE FUNCTION is_word_guessed 
+    USE parameters: secret_word,  letters_guessed (letters guessed so far)
+    LOOP through letters in secret word to see if they are in the letters guessed 
+        IF all the letters of secret_word are in letters_guessed
+            THEN bool = True
+        ELSE bool = False
+        ENDIF
+    RETURN bool 
+
+
+DEFINE FUNCTION get_guessed_word
+    USE parameters: secret_word, letters_guessed
+    LOOP through letters in secret word
+        BUILD string with letters that have been guessed correctly and underscores for letters that have not been guesses
+        RETURN string
+
+DEFINE FUNCTION is_guess_in_word
+    USE parameters: guess, secret_word
+    LOOP through guessed letters to see if they are in secret word 
+        IF guess is in secret_word
+            THEN bool = True
+        ELSE bool = False
+        ENDIF
+    RETURN bool 
+
+// START GAME
+
+CALL function load_word
+    GET secret_word
+
+SET moves_left to 7
+
+
+DEFINE FUNCTION spaceman 
+    USE parameters: secret_word
+    DISPLAY information about the game
+    DOWHILE moves_left is greater than 0 and all letters in secret_word have not been guessed
+        PROMPT player to guess one letter at a time
+            CHECK that only one letter is entered at a time
+        CALL function is_guess_in_word
+            DISPLAY feed back
+        CALL function get_guessed_word
+            DISPLAY guessed word string
+        CALL functions is_word_guessed
+            CHECK if the word is guessed in full
+    ENDDO
+
+CALL functions is_word_guessed
+    DISPLAY if game is won or lost
+    
+    
+
