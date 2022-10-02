@@ -18,6 +18,7 @@ print (secret_word_joint)
 hidden_word = list(len(secret_word) * '_')
 print(hidden_word)
 letters_guessed = ['a', 'n', 'e', 't' ]
+guess = 'l'
 
 def is_word_guessed(secret_word, letters_guessed):
 
@@ -61,9 +62,9 @@ def get_guessed_word(secret_word, letters_guessed, hidden_word):
         i += 1
 
 
-get_guessed_word(secret_word, letters_guessed,hidden_word)
-print(hidden_word)
-print(''.join(hidden_word))
+# get_guessed_word(secret_word, letters_guessed,hidden_word)
+# print(hidden_word)
+# print(''.join(hidden_word))
 
 def is_guess_in_word(guess, secret_word):
     '''
@@ -77,11 +78,18 @@ def is_guess_in_word(guess, secret_word):
         bool: True if the guess is in the secret_word, False otherwise
 
     '''
+    if guess in secret_word:
+     return True
+    else: 
+        return False
+
+
+
     #TODO: check if the letter guess is in the secret word
 
-    pass
 
 
+# print (is_guess_in_word(guess, secret_word))
 
 
 def spaceman(secret_word):
