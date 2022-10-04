@@ -41,51 +41,31 @@ def draw_man (wrong_guess):
     if len(wrong_guess) == 1 :
         print(colors['GREEN']+ ' 👽')
     elif len(wrong_guess) == 2 :
-        print(colors['GREEN']+ ' 👽')
-        print(colors['GREEN']+ '⎧')
+        print(colors['GREEN']+ ' 👽\n⎧')
     elif len(wrong_guess) == 3 :
-        print(colors['GREEN']+ ' 👽')
-        print(colors['GREEN']+ '⎧(')
+        print(colors['GREEN']+ ' 👽\n⎧(')
     elif len(wrong_guess) == 4 :
-        print(colors['GREEN']+ ' 👽')
-        print(colors['GREEN']+ '⎧()')
+        print(colors['GREEN']+ ' 👽\n⎧()')
     elif len(wrong_guess) == 5 :
-        print(colors['GREEN']+ ' 👽')
-        print(colors['GREEN']+ '⎧()⎫')
+        print(colors['GREEN']+ ' 👽\n⎧()⎫')
     elif len(wrong_guess) == 6 :
-        print(colors['GREEN']+ ' 👽')
-        print(colors['GREEN']+ '⎧()⎫')
-        print(colors['GREEN']+ ' ⌋')
+        print(colors['GREEN']+ ' 👽\n⎧()⎫\n ⌋')
     elif len(wrong_guess) == 7 :
-        print(colors['GREEN']+ ' 👽')
-        print(colors['GREEN']+ '⎧()⎫')
-        print(colors['GREEN']+ ' ⌋⌊')
+        print(colors['GREEN']+ ' 👽\n⎧()⎫\n ⌋⌊')
 
 
-    # print(colors['GREEN']+ ' 👽')
-    # print(colors['GREEN']+ '⎧()⎫')
-    # print(colors['GREEN']+ ' ⌋⌊')
 
 def user_input(prompt):
     user_input = input(prompt)
     return user_input
 
 def spaceman(secret_word):
-    '''
-    A function that controls the game of spaceman. Will start spaceman in the command line.
-
-    Args:
-      secret_word (string): the secret word to guess.
-
-    '''
     colors = dict(Fore.__dict__.items())
     print(colors['WHITE']+'*****************************')
     welcomeMessage = 'WELCOME to SPACE MAN\n'
     for character in welcomeMessage:
         print(colors[random.choice(list(colors.keys()))] + character, end='')
-    print(colors['GREEN']+ ' 👽')
-    print(colors['GREEN']+ '⎧()⎫')
-    print(colors['GREEN']+ ' ⌋⌊')
+    print(colors['GREEN']+ ' 👽\n⎧()⎫\n ⌋⌊')
     print(colors['WHITE']+'*****************************')
     print()
     print(colors['CYAN'] + "RULES OF THE GAME:\n- You will be guessing the secret word one letter at a time.\n- You will only have 7 strikes if you guess the wrong letters.\n- Guess the secret word corretly before the spaceman is built to completion.\n- Ready? Let's Go!")
@@ -103,9 +83,9 @@ def spaceman(secret_word):
 
         guess = user_input(colors['CYAN'] + "Enter guess one letter at a time: ")
         while len(guess) != 1 or guess.isalpha() == False or guess.strip() == '':
-            print(' ')
+            print()
             print (colors['RED'] + "Invalid Entry.")
-            print(' ')
+            print()
             guess = user_input(colors['CYAN'] + "Enter guess one letter at a time: ")
 
         while guess in hidden_word or guess in letters_guessed:
@@ -138,10 +118,9 @@ def spaceman(secret_word):
             break
 
 
-
-# --------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------
 # START GAME!
+# --------------------------------------------------------------------------------
 
 secret_word = load_word()
 
